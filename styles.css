@@ -1,34 +1,36 @@
 @import url("https://fonts.googleapis.com/css?family=Josefin+Sans:200,400,600&display=swap");
-
 * {
   box-sizing: border-box;
 }
 
 body {
-  background-image: url(./images/bg-pattern-desktop.svg);
-  background-size: cover;
+  background-image: linear-gradient(
+    135deg,
+    hsl(0, 0%, 100%),
+    hsl(0, 100%, 98%)
+  );
   font-family: "Josefin Sans", sans-serif;
-  background-position: center center;
   margin: 0;
 }
 
-/* wraps around everything */
 .container {
   display: flex;
   min-height: 100vh;
 }
 
-/* left div */
 .left {
+  background-image: url("./images/bg-pattern-desktop.svg");
+  background-size: cover;
+  background-position: center center;
+  padding: 0 40px 40px;
   width: 60%;
-  padding: 0 40px;
 }
 
 .inner-container {
   max-width: 450px;
+  margin: auto;
 }
 
-/* right div */
 .right {
   width: 40%;
 }
@@ -36,7 +38,7 @@ body {
 .bg-image {
   background-image: url("./images/hero-desktop.jpg");
   background-size: cover;
-  background-position: center center; /* will be positioned in the center of the element */
+  background-position: center center;
 }
 
 .logo {
@@ -50,13 +52,13 @@ body {
 
 h1 {
   color: hsl(0, 6%, 24%);
-  text-transform: uppercase;
   font-size: 60px;
   letter-spacing: 10px;
   line-height: 1.1;
   margin-bottom: 0;
-  animation: comeinleft 0.5s ease forwards;
   transform: translateX(-100%);
+  text-transform: uppercase;
+  animation: comeinleft 0.5s ease forwards;
 }
 
 h1 span {
@@ -68,39 +70,37 @@ p {
   color: hsl(0, 36%, 70%);
   line-height: 26px;
   margin: 30px 0;
-  animation: comeinright 0.5s ease forwards;
   transform: translateX(100%);
   opacity: 0;
+  animation: comeinright 0.5s ease forwards;
 }
 
-/* acts as a parent element for button */
 form {
   position: relative;
-  animation: comeinleft 0.5s ease forwards;
   transform: translateX(-100%);
+  animation: comeinleft 0.5s ease forwards;
 }
 
 input {
   background-color: transparent;
   border: 1px solid hsl(0, 36%, 70%);
   border-radius: 50px;
-  padding: 15px 30px;
-  width: 100%;
   font-size: 16px;
+  padding: 15px 30px;
   height: 55px;
+  width: 100%;
 }
 
 input:focus {
-  outline: none;
-  box-shadow: 0px 0px 10px hsla(0, 36%, 70%, 0.5);
   border-width: 2px;
+  box-shadow: 0px 0px 10px hsla(0, 36%, 70%, 0.5);
+  outline: none;
 }
 
 input::placeholder {
   color: hsl(0, 36%, 70%);
 }
 
-/* change border color when error */
 form.error input {
   border: 2px solid hsl(0, 93%, 68%);
 }
@@ -108,16 +108,16 @@ form.error input {
 button {
   background-image: linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%));
   box-shadow: 2px 5px 10px hsla(0, 36%, 70%, 0.5);
-  padding: 15px;
   border: none;
   border-radius: 50px;
-  width: 100px;
+  cursor: pointer;
+  padding: 15px;
   position: absolute;
   top: 0;
   right: 0;
-  height: 55px;
   transition: opacity 0.2s ease;
-  cursor: pointer;
+  height: 55px;
+  width: 100px;
 }
 
 button:hover {
@@ -125,32 +125,28 @@ button:hover {
 }
 
 .error-icon {
+  display: none;
   position: absolute;
   top: 15px;
-  right: 120px;
-  display: none;
+  right: 110px;
 }
 
-/* show icon when error */
 form.error .error-icon {
   display: block;
 }
 
 small {
-  margin-top: 15px;
-  display: block;
-  margin-left: 30px;
   color: hsl(0, 93%, 68%);
   display: none;
+  margin-top: 15px;
+  margin-left: 30px;
 }
 
-/* show text when error */
 form.error small {
   display: block;
 }
 
 /* Animations */
-
 @keyframes comeinleft {
   to {
     transform: translateX(0);
@@ -159,19 +155,32 @@ form.error small {
 
 @keyframes comeinright {
   to {
-    transform: translateX(0);
     opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
+  .logo {
+    margin: 30px 0;
+    width: 100px;
+  }
+
   .bg-mobile {
     display: block;
+    margin-left: -40px;
+    margin-right: -40px;
+    width: calc(100% + 80px);
+  }
+
+  h1 {
+    font-size: 40px;
   }
 
   .left {
     width: 100%;
   }
+
   .right {
     display: none;
   }
